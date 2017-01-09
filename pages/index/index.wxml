@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="home-container">
+  <view class="home-nav">
+    <view class="home-nav-item">
+      <view class="home-nav-Tab">Hot</view>
+    </view>
+    <view class="home-nav-item">
+      <view class="home-nav-Tab">Categories</view>
+    </view>
+  </view>
+  <view class="home-list" v-if="hotList.length > 0">
+    <view class="list-item" wx:for="{{hotList}}" wx:key="momentid">
+      {{username}}
+    </view>
+  </view>
+</view>

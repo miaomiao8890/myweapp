@@ -8,6 +8,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#28a4ff",
     "navigationBarTitleText": "Moments",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
   }
 }

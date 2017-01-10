@@ -1,16 +1,47 @@
 <!--index.wxml-->
 <view class="home-container">
   <view class="home-nav">
-    <view class="home-nav-item">
-      <view class="home-nav-Tab">Hot</view>
+    <view class="home-nav-item {{activeTab == 'hot' ? 'active' : ''}}" bindtap="bandleHotTab">
+      <view class="home-nav-tab">Hot</view>
     </view>
-    <view class="home-nav-item">
-      <view class="home-nav-Tab">Categories</view>
-    </view>
-  </view>
-  <view class="home-list" v-if="hotList.length > 0">
-    <view class="list-item" wx:for="{{hotList}}" wx:key="momentid">
-      {{username}}
+    <view class="home-nav-item {{activeTab == 'categories' ? 'active' : ''}}" bindtap="handleCategoriesTab">
+      <view class="home-nav-tab">Categories</view>
     </view>
   </view>
+  <view class="home-list">
+    <view class="home-refrush">{{refrushTxt}}</view>
+    <block wx:for="{{hotList}}" wx:key="momentid">
+      <view class="home-list-item">
+        <view class="item-info">
+          <image src="{{item.avatar}}" class="item-avatar"></image>
+          <view class="item-info-right">
+            <view class="item-username">{{item.username}}</view>
+            <view class="item-time">{{item.ct}}</view>
+          </view>
+        </view>
+        <view class="item-content">{{item.content}}</view>
+        <view class="item-image">
+          <image mode="widthFix" src="{{item.imgurls[0].o}}"></image>
+        </view>
+        <view class="item-bottom">
+          <view class="item-bottom-btn like-btn">
+            <text>Likes</text>
+          </view>
+          <view class="item-bottom-btn comment-btn">
+            <text>Comments</text>
+          </view>
+        </view>
+        <view class="item-comment" wx:if="{{item.comment_list.length > 0}}">
+          <block wx:for="{{item.comment_list}}" wx:key="unique">
+            <view class="home-list-comment">
+              <text class="comment-username">{{item.username}}</text>
+              <text class="comment-txt">{{item.txt}}</text>
+            </view>
+          </block>
+          <view class="item-comment-viewall">View all comments</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="loadmore">{{loadmoreTxt}}</view>
 </view>

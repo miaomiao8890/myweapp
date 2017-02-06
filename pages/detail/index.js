@@ -42,23 +42,7 @@ Page({
   },
   // 请求更多数据
   fetchMoreData: function() {
-    var _this = this
-    //topmoreList
-    wx.request({
-      url: 'http://123.57.21.57:8011/wxDemo/topmorelist.json',
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        var tmpList = [..._this.data.hotList, ...res.data.data]
-        _this.setData({
-          hotList: tmpList,
-          loadmoreTxt: '下拉加载更多',
-        })
-      }
-    })
+    
   },
   onLoad: function() {
     console.log( 'onLoad' )
